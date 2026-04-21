@@ -14,7 +14,7 @@ const signToken = (user) =>
   jwt.sign(
     { id: user.id, email: user.email, username: user.username },
     process.env.JWT_SECRET || 'your_super_secret_jwt_key_change_this_in_production_12345678!',
-    { expiresIn: process.env.JWT_EXPIRY || '7d' }
+    { expiresIn: process.env.JWT_EXPIRY || process.env.JWT_EXPIRE || '7d' }
   );
 
 // Register user

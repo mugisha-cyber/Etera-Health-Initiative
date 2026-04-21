@@ -1,4 +1,22 @@
-const apiBase = document.body.dataset.apiBase || "http://localhost:5000";
+const resolveApiBase = () => {
+  const fromDom = document.body?.dataset?.apiBase;
+  if (fromDom !== undefined) return fromDom; // allow empty string for same-origin
+
+  const { hostname, port } = window.location;
+  const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1";
+  const hasNonDefaultPort = Boolean(port) && port !== "80";
+
+  // When serving frontend via Live Server (e.g. http://localhost:5500),
+  // default to the backend dev port unless explicitly configured.
+  if (isLocalhost && hasNonDefaultPort) {
+    return "http://localhost:5000";
+  }
+
+  // Default: same-origin (works behind nginx reverse proxy in Docker/production)
+  return "";
+};
+
+const apiBase = resolveApiBase();
 const authTokenKey = "etera_auth_token";
 const authUserKey = "etera_auth_user";
 
@@ -64,7 +82,9 @@ const fetchJson = async (path, options = {}) => {
     });
   } catch (error) {
     throw new Error(
-      "Unable to reach the API. Make sure the backend is running on http://localhost:5000."
+      apiBase
+        ? `Unable to reach the API at ${apiBase}. Make sure the backend is running and reachable.`
+        : "Unable to reach the API. Make sure the backend is running and the frontend reverse proxy is configured."
     );
   }
 

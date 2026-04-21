@@ -5,11 +5,12 @@ const buildTransporter = () => {
   const host = process.env.SMTP_HOST;
   const port = Number(process.env.SMTP_PORT || 465);
   const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const secure = process.env.SMTP_SECURE !== 'false';
+  const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
+  const secure =
+    process.env.SMTP_SECURE === undefined ? port === 465 : process.env.SMTP_SECURE === 'true';
 
   if (!host || !user || !pass) {
-    throw new Error('SMTP settings missing. Configure SMTP_HOST, SMTP_USER, SMTP_PASS.');
+    throw new Error('SMTP settings missing. Configure SMTP_HOST, SMTP_USER, SMTP_PASSWORD.');
   }
 
   return nodemailer.createTransport({
