@@ -1,0 +1,8 @@
+﻿{
+  "name": "etera-health-initiative",
+  "private": true,
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  }
+}

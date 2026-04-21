@@ -1,0 +1,35 @@
+/* Reset password page (frontend/forgot.html) */
+
+body.auth-page {
+  background: linear-gradient(160deg, #e3f5f7 0%, #ffffff 55%);
+}
+
+body.auth-page main {
+  padding-top: 0;
+}
+
+.auth-main {
+  padding: 60px 0 80px;
+}
+
+.auth-card {
+  width: min(520px, 92vw);
+  margin: 0 auto;
+  background: var(--card);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 16px;
+}
+
+.auth-card h1 {
+  font-size: 28px;
+  color: var(--primary-dark);
+}
+
+.auth-foot {
+  font-size: 14px;
+  color: var(--muted);
+}
+

@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Healthcare abstract background">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#72d39a" />
+      <stop offset="60%" stop-color="#0c3b4b" />
+      <stop offset="100%" stop-color="#082633" />
+    </linearGradient>
+    <radialGradient id="g2" cx="0.2" cy="0.2" r="0.8">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" rx="28" fill="url(#g1)" />
+  <circle cx="160" cy="120" r="120" fill="url(#g2)" />
+  <circle cx="640" cy="360" r="160" fill="url(#g2)" />
+  <path d="M120 300 C200 220 300 260 360 200 C420 140 520 120 620 180" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="8" />
+  <path d="M140 360 C240 320 340 360 400 300 C460 240 560 220 660 260" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="6" />
+  <g fill="#ffffff" fill-opacity="0.75">
+    <rect x="370" y="190" width="60" height="120" rx="10" />
+    <rect x="330" y="230" width="140" height="40" rx="10" />
+  </g>
+</svg>

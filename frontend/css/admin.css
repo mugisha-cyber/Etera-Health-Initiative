@@ -1,0 +1,97 @@
+/* Admin dashboard (frontend/admin.html) */
+
+body.admin-page {
+  background: linear-gradient(160deg, #e0f4f6 0%, #ffffff 55%);
+}
+
+body.admin-page main {
+  padding-top: 0;
+}
+
+.admin-main {
+  padding: 60px 0 80px;
+}
+
+.admin-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.admin-panel {
+  background: var(--card);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 16px;
+}
+
+.admin-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-side {
+  display: grid;
+  gap: 20px;
+}
+
+.admin-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid rgba(6, 34, 45, 0.08);
+}
+
+.admin-table th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-page .section {
+    padding: 56px 0;
+  }
+}
+

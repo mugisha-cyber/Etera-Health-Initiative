@@ -1,0 +1,146 @@
+/* Home page (frontend/index.html) */
+
+.hero {
+  padding: 80px 0 60px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 36px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 4vw, 54px);
+  color: var(--primary-dark);
+  margin: 12px 0 16px;
+}
+
+.hero-subtitle {
+  color: var(--muted);
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.hero-stats h3 {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.hero-stats p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hero-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: floatIn 0.9s ease;
+}
+
+.hero-media {
+  position: relative;
+  padding: 24px;
+  background: linear-gradient(140deg, rgba(11, 61, 145, 0.92), rgba(52, 168, 83, 0.9));
+  color: var(--secondary);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero-visual {
+  height: 200px;
+  border-radius: 16px;
+  background: url("../assets/hero.svg") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 12px;
+}
+
+.hero-card-body {
+  padding: 24px;
+}
+
+.contact-icons {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(12, 59, 75, 0.2);
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 10px 18px rgba(12, 59, 75, 0.12);
+}
+
+.icon-button:hover {
+  transform: translateY(-1px);
+  background: rgba(12, 59, 75, 0.08);
+}
+
+.icon-button svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+.icon-button .icon-fill {
+  stroke: none;
+  fill: currentColor;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+}
+

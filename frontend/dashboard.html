@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard | ETERA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body class="dashboard-page" data-api-base="http://localhost:5000" data-requires-auth="true">
+    <header class="site-header minimal">
+      <div class="container dashboard-nav">
+        <div class="nav-left">
+          <a class="profile-link" href="#profile" data-profile-toggle>
+            <img
+              class="avatar medium"
+              src="assets/logo.jpeg"
+              alt="Profile picture"
+              data-user-avatar
+            />
+            <span class="profile-chip-name" data-user-display-name>Member</span>
+          </a>
+        </div>
+        <nav class="nav-center">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="#library">Content</a>
+          <a class="nav-link ghost" href="index.html">Back Home</a>
+          <a class="nav-link ghost" href="admin.html" data-admin-link style="display:none">Admin</a>
+        </nav>
+        <div class="nav-right">
+          <button class="btn" data-logout>Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="container">
+        <section class="dashboard-hero">
+          <div class="profile-header">
+            <div class="profile-visual">
+              <button
+                class="avatar-button"
+                type="button"
+                data-profile-toggle
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img class="avatar" src="assets/logo.jpeg" alt="Profile picture" data-user-avatar />
+                <span class="avatar-badge">Profile</span>
+              </button>
+              <div class="profile-popover" data-profile-panel>
+                <div class="profile-popover-header">
+                  <img class="avatar small" src="assets/logo.jpeg" alt="Profile picture" data-user-avatar />
+                  <div>
+                    <p class="profile-name" data-profile-name>Member</p>
+                    <p class="muted" data-profile-email>member@email.com</p>
+                  </div>
+                </div>
+                <div class="profile-meta">
+                  <p><strong>Role:</strong> <span data-profile-role>Member</span></p>
+                  <p><strong>Username:</strong> <span data-profile-username>member</span></p>
+                </div>
+                <div class="profile-actions">
+                  <button class="btn ghost small" type="button" data-profile-edit>
+                    Edit Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="eyebrow">Member Dashboard</p>
+              <h1 class="dash-title">
+                <span class="text-shimmer">Welcome,</span> <span class="text-shimmer" data-user-name>Member</span>
+              </h1>
+              <p class="animated-text">
+                <span class="word-animate">Manage</span> your profile, <span class="word-animate">view</span> saved content, and <span class="word-animate">stay</span> connected with
+                ETERA programs.
+              </p>
+              <div class="profile-stats">
+                <div>
+                  <span data-count-research>0</span>
+                  <p>Research</p>
+                </div>
+                <div>
+                  <span data-count-videos>0</span>
+                  <p>Videos</p>
+                </div>
+                <div>
+                  <span data-count-posts>0</span>
+                  <p>Posts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <h3>Account Status</h3>
+            <p class="status-pill" data-auth-status>Checking authentication...</p>
+            <p class="small">Last login data is fetched from your token.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Quick Actions</p>
+              <h2><span class="text-shimmer">Stay Engaged</span></h2>
+            </div>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Update Profile</h3>
+              <p>Edit your display name and bio in the member profile page.</p>
+              <button class="btn ghost" type="button" data-profile-link>Edit Profile</button>
+            </article>
+            <article class="card">
+              <h3>Research Library</h3>
+              <p>Save the latest research and receive email alerts when new studies are published.</p>
+              <a class="btn ghost" href="#library">View Research</a>
+            </article>
+            <div class="card">
+              <h3>Email Alerts</h3>
+              <p>Toggle email notifications for new research updates.</p>
+              <label class="toggle">
+                <input type="checkbox" data-subscription-toggle />
+                <span>Send me research updates</span>
+              </label>
+              <p class="form-status" data-subscription-status></p>
+            </div>
+            <article class="card">
+              <h3>Volunteer</h3>
+              <p>Join upcoming community outreach programs.</p>
+              <a class="btn ghost" href="index.html#contact">Get Involved</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="library">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Contribute</p>
+              <h2>Share Your work with others through Etera</h2>
+            </div>
+            <button class="btn ghost small" type="button" data-toggle-contribute aria-expanded="true">
+              Hide Forms
+            </button>
+          </div>
+          <div class="card-grid" data-contribute-forms>
+            <form class="card form-card" data-user-video-form enctype="multipart/form-data">
+              <h3>Upload a Video</h3>
+              <label>
+                Title
+                <input type="text" name="title" placeholder="Video title" required />
+              </label>
+              <label>
+                Video File
+                <input type="file" name="videoFile" accept="video/*" required />
+              </label>
+              <label>
+                Description
+                <textarea name="description" rows="3" placeholder="Short description"></textarea>
+              </label>
+              <button class="btn" type="submit">Submit Video</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+
+            <form class="card form-card" data-user-research-form enctype="multipart/form-data">
+              <h3>Add Research Activity</h3>
+              <label>
+                Title
+                <input type="text" name="title" placeholder="Research title" required />
+              </label>
+              <label>
+                Authors
+                <input type="text" name="authors" placeholder="Research team" required />
+              </label>
+              <label>
+                Summary
+                <textarea name="summary" rows="3" placeholder="Short summary" required></textarea>
+              </label>
+              <label>
+                Upload Research (PDF or DOCX)
+                <input type="file" name="researchFile" accept=".pdf,.doc,.docx,application/pdf" />
+              </label>
+              <label>
+                Link (optional)
+                <input type="url" name="content_url" placeholder="https://..." />
+              </label>
+              <button class="btn" type="submit">Submit Research</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+
+            <form class="card form-card" data-user-gallery-form enctype="multipart/form-data">
+              <h3>Add to Gallery</h3>
+              <label>
+                Event Title
+                <input type="text" name="event_title" placeholder="Event name" required />
+              </label>
+              <label>
+                Event Date
+                <input type="date" name="event_date" />
+              </label>
+              <label>
+                Location
+                <input type="text" name="event_location" placeholder="Event location" />
+              </label>
+              <label>
+                Description
+                <textarea name="description" rows="3" placeholder="Short description"></textarea>
+              </label>
+              <label>
+                Upload Image
+                <input type="file" name="imageFile" accept="image/*" required />
+              </label>
+              <label>
+                Image URL (optional)
+                <input type="url" name="image_url" placeholder="https://..." />
+              </label>
+              <button class="btn" type="submit">Submit Gallery</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="section alt" id="profile" data-profile-section hidden>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Profile</p>
+              <h2>Edit Your Profile</h2>
+            </div>
+            <button class="btn ghost small" type="button" data-profile-close>
+              Close
+            </button>
+          </div>
+          <form class="card form-card" data-profile-form>
+            <h3>Profile Details</h3>
+            <label>
+              Profile Picture (Upload)
+              <input type="file" name="profilePictureFile" accept="image/*" />
+            </label>
+            <label>
+              Full Name
+              <input type="text" name="fullName" placeholder="Your full name" required />
+            </label>
+            <label>
+              Bio
+              <textarea name="bio" rows="4" placeholder="Share a short bio"></textarea>
+            </label>
+            <label>
+              Profile Picture URL (optional)
+              <input type="url" name="profilePicture" placeholder="https://..." />
+            </label>
+            <button class="btn" type="submit">Save Profile</button>
+            <p class="form-status" data-form-status></p>
+          </form>
+        </section>
+
+        <section class="section alt">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Community</p>
+              <h2>Latest Posts</h2>
+            </div>
+          </div>
+          <div class="card-grid" data-posts></div>
+        </section>
+
+        <section class="section" id="library">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Library</p>
+              <h2>All Published Content</h2>
+            </div>
+          </div>
+          <div class="content-stack">
+            <div>
+              <h3 class="section-title">Videos</h3>
+              <div class="card-grid" data-videos></div>
+            </div>
+            <div>
+              <h3 class="section-title">Research</h3>
+              <div class="card-grid" data-research></div>
+              <div class="archive-controls">
+                <button class="btn ghost" type="button" data-research-toggle hidden>
+                  View older research
+                </button>
+              </div>
+              <div class="card-grid archive-grid" data-research-archive hidden></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="dashboard-card">
+            <p class="eyebrow">Announcement</p>
+            <h3 data-dashboard-title>Member Updates</h3>
+            <p data-dashboard-message>
+              Stay informed with the latest ETERA program updates and resources.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" data-lightbox hidden>
+      <div class="lightbox-backdrop" data-lightbox-backdrop></div>
+      <div class="lightbox-container">
+        <button class="lightbox-close" data-lightbox-close aria-label="Close lightbox">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+          </svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </button>
+        <div class="lightbox-content" data-lightbox-content></div>
+        <button class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+          </svg>
+        </button>
+        <div class="lightbox-counter" data-lightbox-counter></div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>ETERA Health Initiative</h3>
+          <p>A platform for public health education, research, and community impact.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="index.html#videos">Videos</a>
+          <a href="index.html#research">Research</a>
+          <a href="index.html#gallery">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Donate</h4>
+          <p class="muted">Bank of Kigali: 100242612188</p>
+          <p class="muted">MoMo: 0798624380</p>
+          <p class="muted">Equity Bank: Account to be added</p>
+        </div>
+      </div>
+            <div class="footer-bottom">
+        ï¿½ 2026 ETERA Health Initiative. All rights reserved.
+        <span class="footer-divider">|</span>
+        Call developer of this web app:
+        <a class="footer-dev" href="mailto:eliseusmugisha@gmail.com" aria-label="Email developer">
+          <svg class="icon-fill" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+          <img src="frontend/assets/email.jpg" id="images-logo" alt="Developer email address">
+        </a>
+        <a class="footer-dev" href="tel:0798624380"><img src="frontend/assets/Call.webp" id="images-logo" alt="Developer phone number"></a>
+      </div>
+    </footer>
+  </body>
+</html>
+

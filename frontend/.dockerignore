@@ -1,0 +1,26 @@
+# .dockerignore for Frontend
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.env.local
+.env.*.local
+.DS_Store
+.vscode
+.idea
+dist
+build
+coverage
+.nyc_output
+*.log
+.next
+.nuxt
+out
+.cache
+.parcel-cache
+Dockerfile.dev
+docker-compose*.yml
+.github
+.editorconfig

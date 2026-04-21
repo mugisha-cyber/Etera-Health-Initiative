@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard | ETERA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body class="admin-page" data-api-base="http://localhost:5000" data-admin-page="true">
+    <header class="site-header minimal">
+      <div class="container nav-wrap">
+        <div class="logo-wrap">
+          <img
+            class="avatar large"
+            src="assets/logo.jpeg"
+            alt="Profile picture"
+            data-user-avatar
+          />
+          <div>
+            <a class="logo" href="index.html">ETERA</a>
+            <p class="user-chip-name" data-user-display-name>Admin</p>
+          </div>
+        </div>
+        <div class="nav-actions">
+          <a class="btn ghost" href="dashboard.html">Member Dashboard</a>
+          <a class="btn ghost" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="container">
+        <section class="admin-hero">
+          <div>
+            <p class="eyebrow">Admin Dashboard</p>
+            <h1>Manage Members & Content</h1>
+            <p>Review users, update roles, and set the member dashboard announcement.</p>
+          </div>
+        </section>
+
+        <section class="admin-grid">
+          <div class="admin-panel">
+            <h2>Registered Users</h2>
+            <div class="admin-filters">
+              <button class="btn ghost small active" type="button" data-user-filter="all">
+                All Users
+              </button>
+              <button class="btn ghost small" type="button" data-user-filter="admins">
+                Admins
+              </button>
+            </div>
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Date Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-admin-users></tbody>
+              </table>
+            </div>
+          </div>
+
+          <aside class="admin-side">
+            <div class="admin-card" data-admin-details>
+              <p class="muted">Select a user to view details.</p>
+            </div>
+
+            <form class="admin-card" data-dashboard-form>
+              <h3>Dashboard Announcement</h3>
+              <label>
+                Title
+                <input type="text" data-dashboard-title-input required />
+              </label>
+              <label>
+                Message
+                <textarea rows="4" data-dashboard-message-input required></textarea>
+              </label>
+              <button class="btn" type="submit">Update Announcement</button>
+            </form>
+          </aside>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Content Management</p>
+              <h2>Manage Platform Content</h2>
+            </div>
+            <button class="btn ghost small" type="button" data-toggle-forms aria-expanded="true">
+              Hide Forms
+            </button>
+          </div>
+          <div class="card-grid" data-forms-container>
+            <form class="card form-card" data-admin-video-form enctype="multipart/form-data">
+              <h3>Add Video</h3>
+              <label>
+                Title
+                <input type="text" name="title" placeholder="Video title" required />
+              </label>
+              <label>
+                Video File
+                <input type="file" name="videoFile" accept="video/*" required />
+              </label>
+              <label>
+                Description
+                <textarea name="description" rows="3" placeholder="Short description of your research article"></textarea>
+              </label>
+              <button class="btn" type="submit">Publish Video</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+
+            <form class="card form-card" data-admin-research-form enctype="multipart/form-data">
+              <h3>Add Research</h3>
+              <label>
+                Title
+                <input type="text" name="title" placeholder="Research title" required />
+              </label>
+              <label>
+                Authors
+                <input type="text" name="authors" placeholder="Names of authors" required />
+              </label>
+              <label>
+                Summary
+                <textarea name="summary" rows="10" placeholder="Describe In details about your research" required></textarea>
+              </label>
+              <label>
+                Upload Research (PDF or DOCX)
+                <input type="file" name="researchFile" accept=".pdf,.doc,.docx,application/pdf" />
+              </label>
+              <label>
+                Link (optional)
+                <input type="url" name="content_url" placeholder="https://..." />
+              </label>
+              <button class="btn" type="submit">Publish Research</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+
+            <form class="card form-card" data-admin-post-form>
+              <h3>Add General Post</h3>
+              <label>
+                Title
+                <input type="text" name="title" placeholder="Post title" required />
+              </label>
+              <label>
+                Message
+                <textarea name="body" rows="3" placeholder="Post message" required></textarea>
+              </label>
+              <button class="btn" type="submit">Publish Post</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+
+            <form class="card form-card" data-admin-gallery-form enctype="multipart/form-data">
+              <h3>Add Gallery Photo</h3>
+              <label>
+                Event Title
+                <input type="text" name="event_title" placeholder="Event name" required />
+              </label>
+              <label>
+                Event Date
+                <input type="date" name="event_date" />
+              </label>
+              <label>
+                Location
+                <input type="text" name="event_location" placeholder="Event location" />
+              </label>
+              <label>
+                Description
+                <textarea name="description" rows="3" placeholder="Short description"></textarea>
+              </label>
+              <label>
+                Upload Image
+                <input type="file" name="imageFile" accept="image/*" required />
+              </label>
+              <label>
+                Image URL (optional)
+                <input type="url" name="image_url" placeholder="https://..." />
+              </label>
+              <button class="btn" type="submit">Publish Gallery</button>
+              <p class="form-status" data-form-status></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="section alt">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Content Management page</p>
+              <h2>Manage Submissions on Website</h2>
+            </div>
+            <button class="btn ghost small" type="button" data-toggle-moderation aria-expanded="true">
+              Hide Content
+            </button>
+          </div>
+          <div class="admin-grid" data-moderation-container>
+            <div class="admin-panel">
+              <h3>User Videos</h3>
+              <div class="table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Uploaded</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-videos></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="admin-panel">
+              <h3>User Research</h3>
+              <div class="table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Uploaded</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-research></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="admin-panel">
+              <h3>Gallery</h3>
+              <div class="table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Event</th>
+                      <th>Date</th>
+                      <th>Uploaded</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-gallery></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>ETERA Health Initiative</h3>
+          <p>A platform for public health education, research, and community impact.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="index.html#videos">Videos</a>
+          <a href="index.html#research">Research</a>
+          <a href="index.html#gallery">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Donate</h4>
+          <p>Your support helps us create impactful health education content.</p>
+        </div>
+      </div>
+            <div class="footer-bottom">
+        <p>Copyright &copy; <span id="year"></span> ETERA Health Initiative. All rights reserved.</p>
+        <span class="footer-divider">|</span>
+        Call developer of this web app:
+        <a class="footer-dev" href="mailto:eliseusmugisha@gmail.com" aria-label="Email developer">
+          <svg class="icon-fill" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+          Email Developer
+        </a>
+        <a class="footer-dev" href="tel:0798624380">Call Developer</a>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+
+  </body>
+</html>
+
+
+

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register | ETERA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body class="auth-page" data-api-base="http://localhost:5000">
+    <header class="site-header minimal">
+      <div class="container nav-wrap">
+        <div class="logo-wrap">
+          <img class="logo-mark" src="assets/logo.jpeg" alt="ETERA logo" />
+          <a class="logo" href="index.html">ETERA</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn ghost" href="login.html" data-auth-guest>Login</a>
+          <a class="btn ghost" href="dashboard.html" data-auth-user style="display:none">
+            Dashboard
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="auth-main">
+      <div class="auth-card">
+        <h1>Create Your Account</h1>
+        <p>Join the ETERA community and access our resources.</p>
+        <form class="form-card" data-auth-form="register">
+          <label>
+            Full Name
+            <input type="text" name="fullName" placeholder="Your full name" autocomplete="name" required />
+          </label>
+          <label>
+            Username
+            <input type="text" name="username" placeholder="Pick a username" autocomplete="username" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <div class="input-group">
+              <input
+                type="password"
+                name="password"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                required
+              />
+              <button class="btn ghost small" type="button" data-toggle-password>
+                Show Password
+              </button>
+            </div>
+          </label>
+          <label>
+            Confirm Password
+            <div class="input-group">
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Repeat your password"
+                autocomplete="new-password"
+                required
+              />
+              <button class="btn ghost small" type="button" data-toggle-password>
+                Show Password
+              </button>
+            </div>
+          </label>
+          <button class="btn" type="submit">Create Account</button>
+          <p class="form-status" data-form-status></p>
+        </form>
+        <p class="auth-foot">
+          Already a member? <a href="login.html">Sign in</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>ETERA Health Initiative</h3>
+          <p>A platform for public health education, research, and community impact.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="index.html#videos">Videos</a>
+          <a href="index.html#research">Research</a>
+          <a href="index.html#gallery">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Donate</h4>
+          <p class="muted">Bank of Kigali: 100242612188</p>
+          <p class="muted">MoMo: 0798624380</p>
+          <p class="muted">Equity Bank: Account to be added</p>
+        </div>
+      </div>
+            <div class="footer-bottom">
+        &copy; 2026 ETERA Health Initiative. All rights reserved.
+        <span class="footer-divider">|</span>
+        Call developer of this web app:
+        <a class="footer-dev" href="mailto:eliseusmugisha@gmail.com" aria-label="Email developer">
+          <svg class="icon-fill" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+          eliseusmugisha@gmail.com
+        </a>
+        <a class="footer-dev" href="tel:0798624380">0798624380</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+
+
+
